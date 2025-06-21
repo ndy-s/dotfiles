@@ -1,0 +1,161 @@
+" ========================
+" Leader Keys
+" ========================
+let mapleader = " "
+let maplocalleader = "\\"
+
+nnoremap <leader> :echo "No mapping found after leader key"<CR>
+
+" ========================
+" General Settings
+" ========================
+set encoding=utf-8
+set fileencoding=utf-8
+
+set number              " Show line numbers
+set relativenumber      " Show relative numbers
+set signcolumn=yes      " Always show the sign column
+set colorcolumn=80      " Highlight column 80
+
+" ========================
+" Search Behavior
+" ========================
+set nohlsearch          " Don't highlight search matches
+set incsearch           " Incremental search
+set ignorecase          " Case-insensitive by default
+set smartcase           " Override ignorecase if uppercase used
+
+" ========================
+" Indentation and Tabs
+" ========================
+set autoindent
+set smartindent
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set breakindent
+set smarttab
+
+" ========================
+" Scrolling and UI
+" ========================
+set scrolloff=10        " Keep 10 lines above/below cursor
+set splitbelow          " New horizontal splits below
+set splitright          " New vertical splits to the right
+
+" ========================
+" File Navigation
+" ========================
+set isfname+=@-@        " Allow @ in filenames
+set path+=**            " Search subdirectories
+set wildignore+=*/node_modules/*
+
+" ========================
+" Editor Behavior
+" ========================
+set backspace=indent,eol,start
+set updatetime=50       " Faster update time for CursorHold events
+set formatoptions+=r    " Continue comments on enter
+
+" ========================
+" Clipboard and Yank (System Clipboard)
+" ========================
+
+" Yank to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+vnoremap <leader>Y "+Y
+
+" Paste from system clipboard
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+
+" Paste from system clipboard using Ctrl+V (if IdeaVim allows it)
+nnoremap <C-v> "+p
+inoremap <C-v> <C-r>+
+vnoremap <C-v> "+p
+
+" ========================
+" Number Manipulation
+" ========================
+nnoremap + <C-a>
+nnoremap _ <C-x>
+
+" ========================
+" Select All
+" ========================
+nnoremap <C-a> ggVG
+
+" ========================
+" File Permissions
+" ========================
+nnoremap <leader>x :!chmod +x %<CR>
+
+" ========================
+" Visual Mode Line Movement
+" ========================
+vnoremap J :m '>+1<CR>gv=gv	
+vnoremap K :m '<-2<CR>gv=gv
+
+" ========================
+" Window Splits
+" ========================
+nnoremap <leader>wv :action SplitVertically<CR>
+nnoremap <leader>ws :action SplitHorizontally<CR>
+
+" Navigate between splits/windows
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>wn <C-w>w
+nnoremap <leader>wp <C-w>W
+
+vnoremap gbc :action CommentByBlockComment<CR>
+
+" ========================
+" IntelliJ Actions Mappings
+" ========================
+
+" File Management
+nnoremap <leader>nf :action NewFile<CR>
+nnoremap <leader>cx :action CloseAllEditors<CR>
+
+" Code Navigation
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gr :action GotoImplementation<CR>
+
+" Search
+nnoremap <leader>sa :action GotoAction<CR>
+nnoremap <leader>sb :action RecentLocations<CR>
+nnoremap <leader>sf :action GotoFile<CR>
+nnoremap <leader>sg :action SearchEverywhere<CR>
+
+" Editing & Code Actions
+nnoremap <leader>ca :action ShowIntentionActions<CR>
+
+" Run & Debug
+nnoremap <leader>rr :action Run<CR>
+nnoremap <leader>dd :action Debug<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dc :action Resume<CR>
+nnoremap <leader>dn :action StepOver<CR>
+nnoremap <leader>di :action StepInto<CR>
+nnoremap <leader>do :action StepOut<CR>
+nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>dv :action ViewBreakpoints<CR>
+
+" UI & Window Management
+nnoremap - :action ActivateProjectToolWindow<CR>
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>` :action HideAllWindows<CR>
+nnoremap <leader>df :action ToggleDistractionFreeMode<CR>
+
+" Local History
+nnoremap <leader>u :action LocalHistory.ShowHistory<CR>
+
+" Comment/Uncomment
+nnoremap gcc :action CommentByLineComment<CR>
+vnoremap gcc :action CommentByLineComment<CR>
+nnoremap gbc :action CommentByBlockComment<CR>
