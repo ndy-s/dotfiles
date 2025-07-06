@@ -7,6 +7,12 @@ keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" }) -- Note: may confl
 keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
 
+vim.keymap.set("n", "<C-d>", "Yp", {
+  noremap = true,
+  silent = true,
+  desc = "Duplicate current line below"
+})
+
 -- Search and Replace
 keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace word under cursor" })
