@@ -77,6 +77,11 @@ inoremap <C-v> <C-r>+
 vnoremap <C-v> "+p
 
 " ========================
+" Duplicate Lines / Selection
+" ========================
+nnoremap <C-d> :t.<CR>
+
+" ========================
 " Number Manipulation
 " ========================
 nnoremap + <C-a>
