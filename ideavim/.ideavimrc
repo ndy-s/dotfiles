@@ -71,7 +71,7 @@ vnoremap <leader>Y "+Y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
-" Paste from system clipboard using Ctrl+V (if IdeaVim allows it)
+" Paste from system clipboard using Ctrl+V 
 nnoremap <C-v> "+p
 inoremap <C-v> <C-r>+
 vnoremap <C-v> "+p
