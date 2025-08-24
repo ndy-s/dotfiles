@@ -80,6 +80,7 @@ vnoremap <C-v> "+p
 " Duplicate Lines / Selection
 " ========================
 nnoremap <C-d> :t.<CR>
+vnoremap <C-d> :t'>+0<CR>gv
 
 " ========================
 " Number Manipulation
@@ -123,6 +124,9 @@ vnoremap gbc :action CommentByBlockComment<CR>
 " IntelliJ Actions Mappings
 " ========================
 
+" Toggle Vim mode on/off
+nnoremap <A-v> :action VimPluginToggle<CR>
+
 " File Management
 nnoremap <leader>nf :action NewFile<CR>
 nnoremap <leader>cx :action CloseAllEditors<CR>
@@ -150,6 +154,7 @@ nnoremap <leader>di :action StepInto<CR>
 nnoremap <leader>do :action StepOut<CR>
 nnoremap <leader>de :action EvaluateExpression<CR>
 nnoremap <leader>dv :action ViewBreakpoints<CR>
+nnoremap <leader>dc :action Debugger.RemoveAllBreakpoints<CR>
 
 " UI & Window Management
 nnoremap - :action ActivateProjectToolWindow<CR>
