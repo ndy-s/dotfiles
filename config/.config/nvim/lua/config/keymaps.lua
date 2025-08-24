@@ -13,6 +13,12 @@ vim.keymap.set("n", "<C-d>", "Yp", {
   desc = "Duplicate current line below"
 })
 
+vim.keymap.set("v", "<C-d>", ":t'>+0<CR>gv", {
+  noremap = true,
+  silent = true,
+  desc = "Duplicate selected lines below"
+})
+
 -- Search and Replace
 keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace word under cursor" })

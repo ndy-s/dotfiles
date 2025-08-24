@@ -7,20 +7,6 @@ return {
     },
     keys = {
         {
-            "<leader>db",
-            function()
-                require("dap").toggle_breakpoint()
-            end,
-            desc = "Toggle Breakpoint",
-        },
-        {
-            "<leader>dn",
-            function()
-                require("dap").continue()
-            end,
-            desc = "Step Over",
-        },
-        {
             "<leader>dd",
             function()
                 require("dapui").toggle()
@@ -28,11 +14,59 @@ return {
             desc = "Toggle DAP UI",
         },
         {
-            "<leader>dx",
+            "<leader>db",
             function()
-                require("dap").terminate()
+                require("dap").toggle_breakpoint()
             end,
-            desc = "Terminate Session",
+            desc = "Toggle Breakpoint",
+        },
+        {
+            "<leader>dr",
+            function()
+                require("dap").continue()
+            end,
+            desc = "Continue / Resume",
+        },
+        {
+            "<leader>dn",
+            function()
+                require("dap").step_over()
+            end,
+            desc = "Step Over",
+        },
+        {
+            "<leader>di",
+            function()
+                require("dap").step_into()
+            end,
+            desc = "Step Into",
+        },
+        {
+            "<leader>do",
+            function()
+                require("dap").step_out()
+            end,
+            desc = "Step Out",
+        },
+        {
+            "<leader>de",
+            function()
+                local dapui = require("dapui")
+                -- Prompt for expression
+                vim.ui.input({ prompt = "Evaluate: " }, function(expr)
+                    if expr and expr ~= "" then
+                        dapui.eval(expr)
+                    end
+                end)
+            end,
+            desc = "Evaluate Expression",
+        },
+        {
+            "<leader>dv",
+            function()
+                require("dapui").open("breakpoints")
+            end,
+            desc = "View Breakpoints",
         },
         {
             "<leader>dc",
@@ -40,6 +74,13 @@ return {
                 require("dap").clear_breakpoints()
             end,
             desc = "Clear All Breakpoints",
+        },
+        {
+            "<leader>dx",
+            function()
+                require("dap").terminate()
+            end,
+            desc = "Terminate Session",
         },
     },
     config = function()

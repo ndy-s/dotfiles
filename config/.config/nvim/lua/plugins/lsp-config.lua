@@ -20,6 +20,7 @@ return {
                     "cssls",
                     "tailwindcss",
                     "jdtls",
+                    "pyright",
                 },
             })
         end,
@@ -55,6 +56,9 @@ return {
                     "google-java-format",
                     "java-debug-adapter",
                     "java-test",
+                    "black",
+                    "ruff",
+                    "mypy",
                 },
 
                 -- if set to true this will check each tool for updates. If updates
@@ -156,6 +160,7 @@ return {
                 "cssls",
                 "tailwindcss",
                 -- "jdtls", -- Already started using autocmd
+                "pyright",
             }
 
             -- General handler for all listed servers
