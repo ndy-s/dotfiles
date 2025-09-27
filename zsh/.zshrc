@@ -16,8 +16,6 @@ plugins=(
 # Source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# ---------------- User configuration ----------------
-
 # Set preferred editors
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -55,3 +53,4 @@ export HISTFILE="$HOME/.zsh_history"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+

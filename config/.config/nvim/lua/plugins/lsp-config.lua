@@ -147,6 +147,7 @@ return {
         config = function()
             -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
             local lspconfig = require("lspconfig")
+
             local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- List all LSP servers
