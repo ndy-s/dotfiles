@@ -147,69 +147,61 @@ return {
         config = function()
             -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
             local lspconfig = require("lspconfig")
-
             local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            -- List all LSP servers
-            local servers = {
-                "lemminx",
-                "bashls",
-                "lua_ls",
-                "ts_ls",
-                "phpactor",
-                "html",
-                "cssls",
-                "tailwindcss",
-                -- "jdtls", -- Already started using autocmd
-                "pyright",
-            }
+            -- Default configuration for all LSPs
+            vim.lsp.config("*", {
+                capabilities = cmp_capabilities,
+                flags = {
+                    debounce_text_changes = 150,
+                },
+            })
 
-            -- General handler for all listed servers
-            for _, server in ipairs(servers) do
-                local opts = {
-                    capabilities = cmp_capabilities,
-                }
+            -- Per-server configurations
+            -- Lua
+            vim.lsp.config("lua_ls", {
+                settings = {
+                    Lua = {
+                        hint = { enable = true },
+                        diagnostics = { globals = { "vim" } },
+                    },
+                },
+            })
 
-                -- Per-server customization
-                if server == "lua_ls" then
-                    opts.settings = {
-                        Lua = {
-                            hint = {
-                                enable = true, -- Enable inlay hints
-                            },
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                        },
-                    }
-                end
+            -- TypeScript / JavaScript
+            vim.lsp.config("ts_ls", {
+                init_options = {
+                    preferences = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                },
+            })
 
-                if server == "ts_ls" then
-                    opts.init_options = {
-                        preferences = {
-                            includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
-                            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                            includeInlayFunctionParameterTypeHints = true,
-                            includeInlayVariableTypeHints = true,
-                            includeInlayPropertyDeclarationTypeHints = true,
-                            includeInlayFunctionLikeReturnTypeHints = true,
-                            includeInlayEnumMemberValueHints = true,
-                        },
-                    }
-                end
+            -- PHP
+            vim.lsp.config("phpactor", {
+                init_options = {
+                    ["language_server_phpstan.enabled"] = true,
+                    ["language_server_psalm.enabled"] = true,
+                },
+                root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+            })
 
-                if server == "phpactor" then
-                    opts.init_options = {
-                        ["language_server_phpstan.enabled"] = true,
-                        ["language_server_psalm.enabled"] = true,
-                    }
-
-                    opts.root_dir = function(fname)
-                        return lspconfig.util.root_pattern("composer.json", ".git")(fname)
-                    end
-                end
-
-                lspconfig[server].setup(opts)
+            -- Simple servers without extra settings
+            for _, server in ipairs({
+                "lemminx",     -- XML
+                "bashls",      -- Bash
+                "html",        -- HTML
+                "cssls",       -- CSS
+                "tailwindcss", -- Tailwind
+                "pyright",     -- Python
+            }) do
+                vim.lsp.config(server, {})
             end
 
             local border = {
