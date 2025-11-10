@@ -21,6 +21,7 @@ return {
                     "tailwindcss",
                     "jdtls",
                     "pyright",
+                    "gopls",
                 },
             })
         end,
@@ -59,6 +60,9 @@ return {
                     "black",
                     "ruff",
                     "mypy",
+                    "gopls",
+                    "goimports",
+                    "golangci-lint",
                 },
 
                 -- if set to true this will check each tool for updates. If updates
@@ -190,6 +194,30 @@ return {
                     ["language_server_psalm.enabled"] = true,
                 },
                 root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+            })
+
+            -- Go
+            vim.lsp.config("gopls", {
+                settings = {
+                    gopls = {
+                        analyses = {
+                            unusedparams = true,
+                            nilness = true,
+                            unusedwrite = true,
+                            shadow = true,
+                        },
+                        staticcheck = true,
+                        gofumpt = true, -- auto format using gofumpt style
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            constantValues = true,
+                            functionTypeParameters = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        },
+                    },
+                },
             })
 
             -- Simple servers without extra settings
