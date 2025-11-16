@@ -19,7 +19,7 @@ return {
                     "html",
                     "cssls",
                     "tailwindcss",
-                    "jdtls",
+                    -- "jdtls",
                     "pyright",
                     "gopls",
                 },
