@@ -19,7 +19,7 @@ return {
                     "html",
                     "cssls",
                     "tailwindcss",
-                    -- "jdtls",
+                    "jdtls",
                     "pyright",
                     "gopls",
                 },
@@ -59,10 +59,10 @@ return {
                     "java-test",
                     "black",
                     "ruff",
-                    "mypy",
                     "gopls",
                     "goimports",
                     "golangci-lint",
+                    "mypy",
                 },
 
                 -- if set to true this will check each tool for updates. If updates

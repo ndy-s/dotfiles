@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		local home = os.getenv("HOME")
 
 		local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-		local root_dir = jdtls_setup.find_root(root_markers)
+		local root_dir = jdtls_setup.find_root(root_markers) or vim.loop.cwd()
 
 		local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
 		local workspace_dir = home .. "/.cache/jdtls/workspace" .. project_name
@@ -111,15 +111,10 @@ vim.api.nvim_create_autocmd("FileType", {
 
 			"-jar",
 			path_to_jar,
-			-- Must point to the                                                     Change this to
-			-- eclipse.jdt.ls installation                                           the actual version
 
 			"-configuration",
 			path_to_config,
-			-- Must point to the                      Change to one of `linux`, `win` or `mac`
-			-- eclipse.jdt.ls installation            Depending on your system.
 
-			-- See `data directory configuration` section in the README
 			"-data",
 			workspace_dir,
 		}
@@ -213,7 +208,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		config.on_attach = on_attach
 		config.capabilities = capabilities
 		config.on_init = function(client, _)
-			client.notify("workspace/didChangeConfiguration", { settings = config.settings })
+			client:notify("workspace/didChangeConfiguration", { settings = config.settings })
 		end
 
 		local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
