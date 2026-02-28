@@ -1,0 +1,15 @@
+theme = catppuccin-mocha.conf
+
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+background-opacity = 0.85
+background-blur-radius = 20
+
+window-padding-x = 10
+window-padding-y = 10
+
+cursor-style = bar
+cursor-style-blink = true
+
+gtk-titlebar = false
