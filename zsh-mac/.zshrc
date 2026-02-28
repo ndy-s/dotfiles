@@ -25,6 +25,9 @@ export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 # PostgreSQL
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
+# Tmuxifier
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
 # Better ls
 alias ls="eza"
 alias ll="eza -l"

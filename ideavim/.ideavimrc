@@ -1,14 +1,10 @@
-" ========================
 " Leader Keys
-" ========================
 let mapleader = " "
 let maplocalleader = "\\"
 
 nnoremap <leader> :echo "No mapping found after leader key"<CR>
 
-" ========================
 " General Settings
-" ========================
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -17,17 +13,13 @@ set relativenumber      " Show relative numbers
 set signcolumn=yes      " Always show the sign column
 set colorcolumn=80      " Highlight column 80
 
-" ========================
 " Search Behavior
-" ========================
 set nohlsearch          " Don't highlight search matches
 set incsearch           " Incremental search
 set ignorecase          " Case-insensitive by default
 set smartcase           " Override ignorecase if uppercase used
 
-" ========================
 " Indentation and Tabs
-" ========================
 set autoindent
 set smartindent
 set shiftwidth=4
@@ -36,30 +28,20 @@ set expandtab
 set breakindent
 set smarttab
 
-" ========================
 " Scrolling and UI
-" ========================
 set scrolloff=10        " Keep 10 lines above/below cursor
 set splitbelow          " New horizontal splits below
 set splitright          " New vertical splits to the right
 
-" ========================
 " File Navigation
-" ========================
 set isfname+=@-@        " Allow @ in filenames
 set path+=**            " Search subdirectories
 set wildignore+=*/node_modules/*
 
-" ========================
 " Editor Behavior
-" ========================
 set backspace=indent,eol,start
 set updatetime=50       " Faster update time for CursorHold events
 set formatoptions+=r    " Continue comments on enter
-
-" ========================
-" Clipboard and Yank (System Clipboard)
-" ========================
 
 " Yank to system clipboard
 nnoremap <leader>y "+y
@@ -76,41 +58,28 @@ nnoremap <C-v> "+p
 inoremap <C-v> <C-r>+
 vnoremap <C-v> "+p
 
-" ========================
 " Duplicate Lines / Selection
-" ========================
 nnoremap <C-d> :t.<CR>
 vnoremap <C-d> :t'>+0<CR>gv
 
-" ========================
 " Number Manipulation
-" ========================
 nnoremap + <C-a>
 nnoremap _ <C-x>
 
-" ========================
 " Select All
-" ========================
 nnoremap <C-a> ggVG
 
-" ========================
 " File Permissions
-" ========================
 nnoremap <leader>x :!chmod +x %<CR>
 
-" ========================
 " Visual Mode Line Movement
-" ========================
 vnoremap J :m '>+1<CR>gv=gv	
 vnoremap K :m '<-2<CR>gv=gv
 
-" ========================
 " Window Splits
-" ========================
 nnoremap <leader>wv :action SplitVertically<CR>
 nnoremap <leader>ws :action SplitHorizontally<CR>
 
-" Navigate between splits/windows
 nnoremap <leader>wh <C-w>h
 nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
@@ -120,10 +89,7 @@ nnoremap <leader>wp <C-w>W
 
 vnoremap gbc :action CommentByBlockComment<CR>
 
-" ========================
 " IntelliJ Actions Mappings
-" ========================
-
 " Toggle Vim mode on/off
 nnoremap <A-v> :action VimPluginToggle<CR>
 
