@@ -23,7 +23,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
 # PostgreSQL
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 # Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -42,3 +42,29 @@ eval "$(zoxide init zsh)"
 # LazyGit
 alias lg="lazygit"
 
+# Antigravity
+alias antigravity="open -a 'Antigravity IDE'"
+
+# pnpm
+export PNPM_HOME="/Users/ndys/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Python
+export PATH=$PATH:/Users/ndys/Library/Python/3.9/bin
+eval "$(pyenv init -)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/Users/ndys/.bun/_bun" ] && source "/Users/ndys/.bun/_bun"
+
+# OpenClaw Completion
+source "/Users/ndys/.openclaw/completions/openclaw.zsh"
+
+# Added by Antigravity IDE
+export PATH="/Users/ndys/.antigravity-ide/antigravity-ide/bin:$PATH"

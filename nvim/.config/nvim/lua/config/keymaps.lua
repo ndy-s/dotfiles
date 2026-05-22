@@ -7,7 +7,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" }) -- Note: may confl
 keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = "Yank line to system clipboard" })
 keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
-keymap.set("i", "<leader>p", [[<C-r>+]], { desc = "Paste from system clipboard (insert)" })
+-- keymap.set("i", "<leader>p", [[<C-r>+]], { desc = "Paste from system clipboard (insert)" })
 
 vim.keymap.set("n", "<C-d>", "Yp", {
   noremap = true,
