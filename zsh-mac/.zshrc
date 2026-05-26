@@ -68,3 +68,21 @@ source "/Users/ndys/.openclaw/completions/openclaw.zsh"
 
 # Added by Antigravity IDE
 export PATH="/Users/ndys/.antigravity-ide/antigravity-ide/bin:$PATH"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/ndys/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+
+# Automation scripts
+function hs_gpa() {
+  current_branch=$(git branch --show-current)
+
+  git for-each-ref --format='%(refname:short)' refs/heads/ | while read branch; do
+    git checkout "$branch" || continue
+    git pull
+  done
+
+  git checkout "$current_branch"
+}
