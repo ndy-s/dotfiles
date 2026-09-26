@@ -56,6 +56,9 @@ esac
 export PATH=$PATH:/Users/ndys/Library/Python/3.9/bin
 eval "$(pyenv init -)"
 
+# gcloud needs Python 3.10-3.14, not the system 3.9
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.11
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -76,13 +79,33 @@ compinit
 
 
 # Automation scripts
-function hs_gpa() {
+hs_gpa() {
+  local current_branch
   current_branch=$(git branch --show-current)
 
-  git for-each-ref --format='%(refname:short)' refs/heads/ | while read branch; do
-    git checkout "$branch" || continue
-    git pull
+  git fetch --all --prune || return 1
+
+  for remote in $(git branch -r | grep '^ *origin/' | grep -v 'origin/HEAD'); do
+    remote=$(echo "$remote" | xargs)
+    local branch=${remote#origin/}
+
+    if git show-ref --verify --quiet "refs/heads/$branch"; then
+      git switch "$branch"
+    else
+      git switch -c "$branch" --track "$remote"
+    fi
+
+    git pull --ff-only
   done
 
-  git checkout "$current_branch"
+  git switch "$current_branch"
 }
+
+. "$HOME/.local/bin/env"
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Qwen Code PATH block begin
+export PATH='/Users/ndys/.local/bin':$PATH
+# Qwen Code PATH block end

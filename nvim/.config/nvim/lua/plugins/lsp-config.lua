@@ -13,7 +13,8 @@ return {
                     "lemminx",
                     "bashls",
                     "lua_ls",
-                    "ts_ls",
+                    "vtsls",
+                    "eslint",
                     "phpactor",
                     "html",
                     "cssls",
@@ -34,7 +35,7 @@ return {
                     "shellcheck",
                     "stylua",
                     "luacheck",
-                    "eslint_d",
+                    "prettierd",
                     "pint",
                     "phpstan",
                     "psalm",
@@ -104,17 +105,19 @@ return {
                 },
             })
 
-            vim.lsp.config("ts_ls", {
-                init_options = {
-                    preferences = {
-                        includeInlayParameterNameHints = "all",
-                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                        includeInlayFunctionParameterTypeHints = true,
-                        includeInlayVariableTypeHints = true,
-                        includeInlayPropertyDeclarationTypeHints = true,
-                        includeInlayFunctionLikeReturnTypeHints = true,
-                        includeInlayEnumMemberValueHints = true,
+            vim.lsp.config("vtsls", {
+                settings = {
+                    typescript = {
+                        inlayHints = {
+                            parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+                            parameterTypes = { enabled = true },
+                            variableTypes = { enabled = true },
+                            propertyDeclarationTypes = { enabled = true },
+                            functionLikeReturnTypes = { enabled = true },
+                            enumMemberValues = { enabled = true },
+                        },
                     },
+                    vtsls = { autoUseWorkspaceTsdk = true },
                 },
             })
 
@@ -155,6 +158,7 @@ return {
                 "html",
                 "cssls",
                 "tailwindcss",
+                "eslint",
                 "pyright",
             }) do
                 vim.lsp.config(server, {})

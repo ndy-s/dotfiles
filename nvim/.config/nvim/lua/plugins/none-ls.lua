@@ -26,8 +26,8 @@ return {
                 -- Lua
                 null_ls.builtins.formatting.stylua,
 
-                -- JS, TS
-                require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+                -- JS, TS (diagnostics come from the eslint LSP)
+                null_ls.builtins.formatting.prettierd,
 
                 -- PHP, Blade
                 -- null_ls.builtins.diagnostics.phpstan,
