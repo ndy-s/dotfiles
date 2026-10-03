@@ -21,7 +21,6 @@ return {
                     "tailwindcss",
                     "jdtls",
                     "pyright",
-                    "ruff",
                     "gopls",
                 },
             })
@@ -45,7 +44,6 @@ return {
                     "google-java-format",
                     "java-debug-adapter",
                     "java-test",
-                    "debugpy",
                     "gopls",
                     "goimports",
                     "golangci-lint",
@@ -161,13 +159,6 @@ return {
                         },
                     },
                 },
-            })
-
-            -- Ruff handles linting + formatting; pyright stays the hover/completion/type source
-            vim.lsp.config("ruff", {
-                on_attach = function(client)
-                    client.server_capabilities.hoverProvider = false
-                end,
             })
 
             for _, server in ipairs({

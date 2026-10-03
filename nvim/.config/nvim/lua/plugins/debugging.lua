@@ -4,7 +4,6 @@ return {
         "rcarriga/nvim-dap-ui",
         "nvim-neotest/nvim-nio",
         "xdebug/vscode-php-debug",
-        "mfussenegger/nvim-dap-python",
     },
     keys = {
         {
@@ -89,9 +88,6 @@ return {
         local dapui = require("dapui")
 
         dapui.setup()
-
-        -- Python (uses debugpy from mason; venv-selector.nvim overrides this path when you pick a venv)
-        require("dap-python").setup(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python")
 
         dap.listeners.before.attach.dapui_config = function()
             dapui.open()

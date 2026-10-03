@@ -43,7 +43,6 @@ eval "$(zoxide init zsh)"
 alias lg="lazygit"
 
 # Antigravity
-alias antigravity="open -a 'Antigravity IDE'"
 
 # pnpm
 export PNPM_HOME="/Users/ndys/Library/pnpm"
@@ -109,3 +108,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # Qwen Code PATH block begin
 export PATH='/Users/ndys/.local/bin':$PATH
 # Qwen Code PATH block end
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/ndys/.local/bin:$PATH"
