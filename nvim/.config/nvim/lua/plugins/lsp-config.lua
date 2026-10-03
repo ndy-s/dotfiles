@@ -21,6 +21,7 @@ return {
                     "tailwindcss",
                     "jdtls",
                     "pyright",
+                    "ruff",
                     "gopls",
                 },
             })
@@ -44,12 +45,10 @@ return {
                     "google-java-format",
                     "java-debug-adapter",
                     "java-test",
-                    "black",
-                    "ruff",
+                    "debugpy",
                     "gopls",
                     "goimports",
                     "golangci-lint",
-                    "mypy",
                 },
                 auto_update = true,
                 run_on_start = true,
@@ -152,6 +151,25 @@ return {
                 },
             })
 
+            vim.lsp.config("pyright", {
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            diagnosticMode = "workspace",
+                        },
+                    },
+                },
+            })
+
+            -- Ruff handles linting + formatting; pyright stays the hover/completion/type source
+            vim.lsp.config("ruff", {
+                on_attach = function(client)
+                    client.server_capabilities.hoverProvider = false
+                end,
+            })
+
             for _, server in ipairs({
                 "lemminx",
                 "bashls",
@@ -159,7 +177,6 @@ return {
                 "cssls",
                 "tailwindcss",
                 "eslint",
-                "pyright",
             }) do
                 vim.lsp.config(server, {})
             end
